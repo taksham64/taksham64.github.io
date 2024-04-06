@@ -16,9 +16,17 @@
            padding-top: 0.5%;
            padding-bottom: 0.5%;
         }
+        .cardno2{
+            display: flex;
+            
+        }
         .placeholderText{
            width: 500px;
            height: 50px;
+        }
+        .cardno2 img{
+            width: 50px;
+            height: 200px;
         }
         .nav-header a{
             color: white;
@@ -47,11 +55,13 @@
             border: 1px solid;
             border-color: white;
         }
+       
         .cards{
             display: flex;
-            justify-content: space-evenly;
+            gap:2%;
             position: relative;
             margin-top: -15%;
+            margin-left: 8%;
         }
         .card1 h1{
             font-size: 15px;
@@ -80,7 +90,12 @@
         }
         .cards2{
             display: flex;
-            justify-content: space-evenly;    
+            gap: 2%;
+            margin-left: 7%;    
+        }
+        .main-video{
+            width: 600px;
+            height: 337px;
         }
         .card1 h2{
             color: white;
@@ -123,6 +138,28 @@
         .lastNote img{
             width: 200px;
         }
+        .youmayalsolike{
+        background-color: white;
+        }
+
+        .youmayalsolike h1{
+            font-size: 25px;
+        }
+        
+        .youmayalsolikeimages{
+            display: flex;
+            justify-content: space-evenly;
+            padding-bottom: 2%;
+        }
+        .youmayalsolikeimages img{
+            height: 250px;
+            width: 250px;
+        }
+        .youmayalsolikeimages img:hover{
+            height: 255px;
+            width: 255px;
+        }
+
 
     </style>
 </head>
@@ -178,7 +215,7 @@
         <a href="#">Taksham's Amazon.in</a>
         <a href="#">Home Improvement</a>
     </div>
-    <div class="container container1">
+    <div class="container-fluid container1">
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -268,7 +305,10 @@
                                 <img src="https://m.media-amazon.com/images/I/511eQ-rit-L._AC_SY145_.jpg">
                                 <h4>Purchased once</h4>
                             </div>
-                        </div>
+                        </div>   
+                </div>
+                <div class="c2 cardno2 card1">
+                  <img width="50px" height="200px" src="https://m.media-amazon.com/images/S/al-eu-726f4d26-7fdb/e004e942-4a5b-4a3f-bebc-a3c39dafdbde.jpg"> 
                 </div>
         </div> 
         <div class="t1">
@@ -277,7 +317,7 @@
             </button>  
         </div>
         <div class="cards2">
-            <div class="card1" style="background-image: url(https://m.media-amazon.com/images/S/pv-target-images/9f51e8ce4118362176505993ecd1a70223351fa1fee4a9d290ef1d945a3cbf30._AC_SL792_.png);">
+            <div class="card1 main-video" style="background-image: url(https://m.media-amazon.com/images/S/pv-target-images/9f51e8ce4118362176505993ecd1a70223351fa1fee4a9d290ef1d945a3cbf30._AC_SL792_.png);">
                <h2>Prime Video: Recommended for you</h2>
                <h2>Panchayat-Season 1</h2> 
 
@@ -357,6 +397,50 @@
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
+        </div>
+        <div class="youmayalsolike container-fluid" >
+            <h1>You May Also like</h1>
+            <div class="youmayalsolikeimages">
+            <img src="https://m.media-amazon.com/images/I/41UNbt0UgkL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/41NP0EISfQL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/41ozZqaOMzL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/41O6jgfTCIL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/31ZRd+gD7OL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/61O5eUqNZML._AC_SY200_.jpg">
+        </div>
+        </div>
+        <div class="youmayalsolike container-fluid" >
+            <h1>Up to 60% off | Bestsellers</h1>
+            <div class="youmayalsolikeimages">
+            <img src="https://m.media-amazon.com/images/I/71-8gqDAalL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/819ARdIuEvS._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/91e2a5D-ExL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/61piNi70giL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/712+H1IHbML._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/61O5eUqNZML._AC_SY200_.jpg">
+        </div>
+        </div>
+        <div class="youmayalsolike container-fluid" >
+            <h1>Bestselling kitchen products | Amazon Brands & more</h1>
+            <div class="youmayalsolikeimages">
+            <img src="https://m.media-amazon.com/images/I/51+WWBC-YvL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/71VJeH76FCL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/71iLhBB-WmL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/71JfqFSkZfL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/71JfqFSkZfL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/91weq3mK2TL._AC_SY200_.jpg">
+        </div>
+        </div>
+        <div class="youmayalsolike container-fluid" >
+            <h1>Best Sellers in Computers & Accessories</h1>
+            <div class="youmayalsolikeimages">
+            <img src="https://m.media-amazon.com/images/I/61UzQMCRaeL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/516LU0H963L._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/41KuRShR97L._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/61zroMjd9FL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/71Zf9uUp+GL._AC_SY200_.jpg">
+            <img src="https://m.media-amazon.com/images/I/71KEV8aETOL._AC_SY200_.jpg">
+        </div>
         </div>
     </div>
     <div class="container-fluid footer-bar">
