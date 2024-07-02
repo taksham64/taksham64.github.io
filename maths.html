@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maths</title>
+    <style>
+        .button{
+            width: auto;
+            height: auto;
+            font-size: 20px;
+        }
+        body{
+            background-color: black;
+            color: aliceblue;
+            font-size: 30px;
+        }
+    
+    </style>
+</head>
+<body>
+    <script>
+        const firstNumber =  parseFloat(document.getElementById("first").value);
+        const secondNumber = parseFloat(document.getElementById("second").value);
+        
+        function sum(){
+            const firstNumber =  parseFloat(document.getElementById("first").value);
+            const secondNumber = parseFloat(document.getElementById("second").value);
+            alert( firstNumber + secondNumber)
+        }
+
+        function sub(){
+            const firstNumber =  parseFloat(document.getElementById("first").value);
+            const secondNumber = parseFloat(document.getElementById("second").value);
+            alert( firstNumber - secondNumber)
+        }
+
+        function multiply(){
+            const firstNumber =  parseFloat(document.getElementById("first").value);
+            const secondNumber = parseFloat(document.getElementById("second").value);
+            alert ( firstNumber * secondNumber)
+        }
+
+        function divide(){
+            const firstNumber =  parseFloat(document.getElementById("first").value);
+            const secondNumber = parseFloat(document.getElementById("second").value);
+            alert ( firstNumber / secondNumber)
+        }
+    </script>
+    <center>
+        <h1>Need help with maths?</h1>
+        <label>First Number   </label><input type="text" id="first" placeholder="Enter the first number here"><br><br>   
+        <label>Second Number  </label><input type="text" id="second" placeholder="Enter the secound number here"><br><br>
+
+        <button class="button" onclick="sum()">Add (+)</button>
+        <button class="button" onclick="sub()">Subtract (-)</button>
+        <button class="button" onclick="multiply()">Multiply (*)</button>
+        <button class="button" onclick="divide()">Divide (/)</button>
+    </center>
+</body>
+</html>
