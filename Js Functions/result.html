@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        .button{
+            width: auto;
+            height: auto;
+            font-size: 20px;
+        }
+        body{
+            background-color: rgb(37, 75, 90);
+            color: rgb(211, 200, 200);
+            font-size: 30px;
+        }
+        
+    </style>
+</head>
+<body>
+    <script>
+        function result(){
+            let name = document.getElementById("name").value;
+            let physicsMarks = parseFloat(document.getElementById("physics").value);
+            let chemistryMarks = parseFloat(document.getElementById("chemistry").value);
+            let mathMarks = parseFloat(document.getElementById("maths").value);
+                if ((100)*(physicsMarks + chemistryMarks + mathMarks)/(300) >= 40 ) {
+                    alert(`${name} has passed `)               
+                } else {
+                    alert(`${name} has failed`) 
+                }
+        }
+    </script>
+    <center>
+        <h1>ABC Sr. Sec. Public School</h1>
+        <h2>Result calculator</h2>
+        <label>Student Name  </label><input type="text" id="name"><br><br>
+        <label>Physics  </label><input type="text" id="physics" placeholder="Enter Students Marks here"> out of 100 <br><br> 
+        <label>Chemistry  </label><input type="text" id="chemistry" placeholder="Enter Students Marks here"> out of 100 <br><br> 
+        <label">Maths  </label><input type="text" id="maths" placeholder="Enter Students Marks here"> out of 100 <br><br> 
+        <button class="button" onclick="result()">Check Result</button>
+    </center>
+    
+</body>
+</html>
