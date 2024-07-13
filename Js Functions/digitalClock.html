@@ -7,6 +7,8 @@
     <style>
         body{
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: orange;
+            background-color: black;
         }
         .h1{
             font-size: 30px;
@@ -27,12 +29,12 @@
         let m = d.getMinutes();
         let s = d.getSeconds();
         let p;
-            if ( h <= 12) {
+            if ( h < 12) {
                  p = "am"               
             } else {
                 p = "pm"
             }
-     let time = h + " : " + m + " : " + s + " : " + p
+     let time = h + " : " + m + " : " + s + "  " + p
      document.getElementById("clock").innerHTML=time;
 };
 setInterval(updateTime, 1000);
