@@ -60,6 +60,7 @@
                     alert("New task cannot be as same as the earlier one")
                 }else{
                     textNode.nodeValue=updatedTask
+                    alert(`${inputValue} has now been updated to ${updatedTask}`)
                 }
                 
             }
@@ -72,7 +73,7 @@
             dltbtn.onclick = function(){
                 let listitems = this.parentElement
                 listitems.remove()
-                alert("Task has been removed")
+                alert(`${inputValue} been removed`)
                 
             }
             document.getElementById("data").appendChild(li)
