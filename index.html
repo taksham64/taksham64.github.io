@@ -5,31 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taksham's Portfolio</title>
     <style>
-         a:hover{
-            font-size: larger;
-             color: red;
+        body {
+            background-color: #000;
+            font-family: 'Arial', sans-serif;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
         }
-        body{
-            background-color: azure;
+        h1, h2, h3 {
+            color: #fff;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        }
+        h1 {
+            margin: 20px 0;
+        }
+        h2 {
+            margin: 20px 0;
+            font-size: 1.5em;
+        }
+        a {
+            color: #ff8c00;
+            text-decoration: none;
+            transition: color 0.3s, font-size 0.3s;
+        }
+        a:hover {
+            color: #ff4500;
+            font-size: 1.1em;
+        }
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(30, 30, 30, 0.8); /* Darker background for content area */
+            border-radius: 10px;
+        }
+        .section-title {
+            margin: 20px 0;
+            font-size: 2em;
+            text-decoration: underline;
+            cursor: pointer;
+            user-select: none;
+        }
+        .project-list {
+            display: none;
+            margin: 20px 0;
+            padding: 0;
+            list-style: none;
+            text-align: left;
+        }
+        .project-list .card {
+            background: #333;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: box-shadow 0.3s;
+        }
+        .project-list .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <center>
-        <img src="https://media.tenor.com/aAZuw0Z8VWgAAAAM/hello-cat.gif">
-        <h1>Welcome to Taksham's Portfolio</h1><br>
-        <u><h1>Frontend Projects</h1></u>
-        <h2>Project 1 - <a href="/./Frontend Project/photographysite.html">Photography's website</a></h2><br>
-        <h2>Project 2 - <a href="/./Frontend Project/resturantwebsite.html">Resturant's Website</a></h2><br>
-        <h2>Project 3 - <a href="/./Frontend Project/apple.html">Apple's Website Clone</a></h2><br> 
-        <h2>Project 4 - <a href="/./Frontend Project/amazon.html">Amazon's Website Clone</a></h2><br><br>
-        <u><h1>JS Functions Projects</h1></u>
-        <h2>Project 1 - <a href="/./Js Functions/result.html">Calculate Result (criteria = if total is less than 40% then you are fail)</a></h2><br>
-        <h2>Project 2 - <a href="/./Js Functions/confirmPassword.html">confirm Password</a></h2><br>
-        <h2>Project 3 - <a href="/./Js Functions/maths.html">Maths</a></h2><br>
-        <h2>Project 4 - <a href="/./Js Functions/studentform.html">Student's form</a></h2><br>
-        <h2>Project 5 - <a href="/./Js Functions/digitalClock.html">Digital Clock</a></h2><br>
-        <h2>Project 6 - <a href="/./Js Functions/todo.html">TO-DO List</a></h2><br>
-    </center>
+    <div class="content">
+        <img src="https://media.tenor.com/aAZuw0Z8VWgAAAAM/hello-cat.gif" alt="Greeting Cat GIF">
+        <h1>Welcome to Taksham's Portfolio</h1>
+        
+        <section>
+            <h2 class="section-title" onclick="toggleVisibility('frontendProjects')">Frontend Projects</h2>
+            <ul id="frontendProjects" class="project-list">
+                <li class="card">
+                    <h3>Project 1 - <a href="/./Frontend Project/photographysite.html">Photography's Website</a></h3>
+                </li>
+                <li class="card">
+                    <h3>Project 2 - <a href="/./Frontend Project/resturantwebsite.html">Restaurant's Website</a></h3>
+                </li>
+                <li class="card">
+                    <h3>Project 3 - <a href="/./Frontend Project/apple.html">Apple's Website Clone</a></h3>
+                </li>
+                <li class="card">
+                    <h3>Project 4 - <a href="/./Frontend Project/amazon.html">Amazon's Website Clone</a></h3>
+                </li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2 class="section-title" onclick="toggleVisibility('jsFunctions')">JS Functions Projects</h2>
+            <ul id="jsFunctions" class="project-list">
+                <li class="card">
+                    <h3>Project 1 - <a href="/./Js Functions/result.html">Calculate Result (criteria: if total is less than 40% then you fail)</a></h3>
+                </li>
+                <li class="card">
+                    <h3>Project 2 - <a href="/./Js Functions/confirmPassword.html">Confirm Password</a></h3>
+                </li>
+                <li class="card">
+                    <h3>Project 3 - <a href="/./Js Functions/maths.html">Maths</a></h3>
+                </li>
+                <li class="card">
+                    <h3>Project 4 - <a href="/./Js Functions/studentform.html">Student's Form</a></h3>
+                </li>
+                <li class="card">
+                    <h3>Project 5 - <a href="/./Js Functions/digitalClock.html">Digital Clock</a></h3>
+                </li>
+                <li class="card">
+                    <h3>Project 6 - <a href="/./Js Functions/todo.html">TO-DO List</a></h3>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        function toggleVisibility(id) {
+            const element = document.getElementById(id);
+            if (element.style.display === "block") {
+                element.style.display = "none";
+            } else {
+                element.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
