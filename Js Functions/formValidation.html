@@ -13,7 +13,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            overflow: auto; /* Allow scrolling if content overflows */
         }
         .container {
             background-color: #fff;
@@ -22,6 +23,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 600px;
+            box-sizing: border-box;
         }
         h1 {
             color: #007bff; /* Changed color for better visibility */
@@ -33,6 +35,7 @@
             color: #555;
             text-align: center;
             font-size: 1.1em;
+            margin-bottom: 20px;
         }
         h2 {
             color: #444;
