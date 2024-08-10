@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form (Validation Check)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            color: #007bff; /* Changed color for better visibility */
+            text-align: center;
+            font-size: 2em; /* Increased font size for emphasis */
+            margin-bottom: 20px; /* Added margin for spacing */
+        }
+        p {
+            color: #555;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        h2 {
+            color: #444;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Application Form</h1>
+        <p>Thank you for your interest in working with us. Please check below for available job opportunities that meet your criteria and send your application by filling out the Job Application Form.</p>
+        <form onsubmit="return validation()">
+            <h2>Name</h2>
+            <input type="text" id="name" placeholder="Name">
+            <span id="userr" class="error-message"></span>
+
+            <h2>Email</h2>
+            <input type="text" id="email" placeholder="Email">
+            <span id="emaill" class="error-message"></span>
+
+            <h2>Current Position</h2>
+            <input type="text" id="position" placeholder="Current Position">
+            <span id="position-error" class="error-message"></span>
+
+            <h2>Current Organisation</h2>
+            <input type="text" id="org" placeholder="Current Organisation">
+            <span id="org-error" class="error-message"></span>
+
+            <h2>Projects You Worked on</h2>
+            <input type="text" id="projects" placeholder="Projects You Worked on">
+            <span id="projects-error" class="error-message"></span>
+
+            <h2>Resume link</h2>
+            <input type="text" id="resume" placeholder="Resume Link">
+            <span id="resume-error" class="error-message"></span>
+
+            <h2>References</h2>
+            <input type="text" id="ref" placeholder="References">
+            <span id="ref-error" class="error-message"></span>
+
+            <h2>Reference Email</h2>
+            <input type="text" id="refemail" placeholder="Reference Email">
+            <span id="refemail-error" class="error-message"></span>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function validation(){
+            let valid = true;
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let position = document.getElementById("position").value;
+            let org = document.getElementById("org").value;
+            let projects = document.getElementById("projects").value;
+            let resume = document.getElementById("resume").value;
+            let ref = document.getElementById("ref").value;
+            let refemail = document.getElementById("refemail").value;
+
+            // Validate Name
+            if(name === ""){
+                document.getElementById("userr").innerHTML = "Please enter your name";
+                valid = false;
+            } else if(name.length < 2){
+                document.getElementById("userr").innerHTML = "Enter a valid name";
+                valid = false;
+            } else {
+                document.getElementById("userr").innerHTML = "";
+            }
+
+            // Validate Email
+            if(email === ""){
+                document.getElementById("emaill").innerHTML = "Email cannot be empty";
+                valid = false;
+            } else if(!isValidEmail(email)){
+                document.getElementById("emaill").innerHTML = "Enter a valid email address";
+                valid = false;
+            } else {
+                document.getElementById("emaill").innerHTML = "";
+            }
+
+            // Validate Position
+            if(position === ""){
+                document.getElementById("position-error").innerHTML = "Position is required";
+                valid = false;
+            } else {
+                document.getElementById("position-error").innerHTML = "";
+            }
+
+            // Validate Organisation
+            if(org === ""){
+                document.getElementById("org-error").innerHTML = "Organisation is required";
+                valid = false;
+            } else {
+                document.getElementById("org-error").innerHTML = "";
+            }
+
+            // Validate Resume Link
+            if(resume === ""){
+                document.getElementById("resume-error").innerHTML = "Resume link cannot be blank";
+                valid = false;
+            } else {
+                document.getElementById("resume-error").innerHTML = "";
+            }
+
+            return valid; // If all validations pass, the form will be submitted
+        }
+    </script>
+</body>
+</html>
