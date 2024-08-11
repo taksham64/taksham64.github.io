@@ -33,16 +33,20 @@
 <body>
     <h1>Plan Your Day</h1>
     <input type="text" placeholder="Enter your task" id="planTask">
-    <button id="add" onclick="addTask()" class="button">Add</button>
+    <button id="add" onclick="addTask()" class="button">Add</button><br>
+    <span id="blank-error" style="color: red;"></span>
     <ul id="data"></ul>
 
     <script>
         function addTask(){
             let inputValue = document.getElementById("planTask").value
             if( inputValue === ""){
-                alert("Task cannot be empty")
-            }
-
+               document.getElementById("blank-error").innerHTML = "Please enter some values" 
+               return false
+            }else if( inputValue != ""){
+                document.getElementById("blank-error").innerHTML = ""
+            }       
+             
             let li = document.createElement("li")
             let textNode = document.createTextNode(inputValue)
             li.appendChild(textNode)
