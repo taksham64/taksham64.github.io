@@ -5,94 +5,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO List</title>
     <style>
-        body{
+        body {
             text-align: center;
             font-size: 25px;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             color: white;
-            background-color: black;
+            background-color: #1c1c1c;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #ff9e2c;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .todo-container {
+            width: 90%;
+            max-width: 500px;
+            background-color: #2e2e2e;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid #444;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            color: #fff;
+            background-color: #1c1c1c;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
         .button {
-            background-color: gray;
-            color: black;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 5px 10px;
+            background-color: #ff9e2c;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
             margin: 5px;
             cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 158, 44, 0.4);
         }
+
         .button:hover {
-            background-color: #555;
+            background-color: #e88d1f;
+            box-shadow: 0 7px 20px rgba(255, 158, 44, 0.6);
+            transform: translateY(-3px);
         }
-        li {
-            margin: 10px 0;
+
+        #blank-error {
+            color: #ff4d4d;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        ul {
             list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            background-color: #3a3a3a;
+            border-radius: 10px;
+            margin: 10px 0;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        li:hover {
+            background-color: #4d4d4d;
+        }
+
+        li.done {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        li button {
+            margin-left: 10px;
         }
     </style>
 </head>
 <body>
     <h1>Plan Your Day</h1>
-    <input type="text" placeholder="Enter your task" id="planTask">
-    <button id="add" onclick="addTask()" class="button">Add</button><br>
-    <span id="blank-error" style="color: red;"></span>
-    <ul id="data"></ul>
+    <div class="todo-container">
+        <input type="text" placeholder="Enter your task" id="planTask">
+        <button id="add" onclick="addTask()" class="button">Add</button><br>
+        <span id="blank-error"></span>
+        <ul id="data"></ul>
+    </div>
 
     <script>
-        function addTask(){
-            let inputValue = document.getElementById("planTask").value
-            if( inputValue === ""){
-               document.getElementById("blank-error").innerHTML = "Please enter some values" 
-               return false
-            }else if( inputValue != ""){
-                document.getElementById("blank-error").innerHTML = ""
-            }       
-             
-            let li = document.createElement("li")
-            let textNode = document.createTextNode(inputValue)
-            li.appendChild(textNode)
+        function addTask() {
+            let inputValue = document.getElementById("planTask").value;
+            if (inputValue === "") {
+                document.getElementById("blank-error").innerHTML = "Please enter some values";
+                return false;
+            } else {
+                document.getElementById("blank-error").innerHTML = "";
+            }
 
-            let editbtn = document.createElement("button")
-            editbtn.appendChild(document.createTextNode("Edit"))
-            li.appendChild(editbtn)
-            editbtn.className = "button"
+            let li = document.createElement("li");
+            let textNode = document.createTextNode(inputValue);
+            li.appendChild(textNode);
 
-            editbtn.onclick = function(){
-                let updatedTask = prompt("Enter your updated task here")
-                if(updatedTask == ""){
-                    alert("Task cannot be empty")
-                }else if( updatedTask === inputValue){
-                    alert("New task cannot be as same as the earlier one")
-                }else{
-                    textNode.nodeValue=updatedTask
-                    alert(`${inputValue} has now been updated to ${updatedTask}`)
+            let editbtn = document.createElement("button");
+            editbtn.appendChild(document.createTextNode("Edit"));
+            li.appendChild(editbtn);
+            editbtn.className = "button";
+
+            editbtn.onclick = function() {
+                let updatedTask = prompt("Enter your updated task here");
+                if (updatedTask == "") {
+                    alert("Task cannot be empty");
+                } else if (updatedTask === inputValue) {
+                    alert("New task cannot be the same as the earlier one");
+                } else {
+                    textNode.nodeValue = updatedTask;
+                    alert(`${inputValue} has now been updated to ${updatedTask}`);
                 }
-                
             }
 
-            let dltbtn = document.createElement("button")
-            dltbtn.appendChild(document.createTextNode("Delete"))
-            li.appendChild(dltbtn)
-            dltbtn.className = "button"
+            let dltbtn = document.createElement("button");
+            dltbtn.appendChild(document.createTextNode("Delete"));
+            li.appendChild(dltbtn);
+            dltbtn.className = "button";
 
-            dltbtn.onclick = function(){
-                let listitems = this.parentElement
-                listitems.remove()
-                alert(`${inputValue} been removed`)
-                
+            dltbtn.onclick = function() {
+                let listitems = this.parentElement;
+                listitems.remove();
+                alert(`${inputValue} has been removed`);
             }
-            document.getElementById("data").appendChild(li)
 
-            let donebtn = document.createElement("button")
-            donebtn.className = "button"
-            donebtn.appendChild(document.createTextNode("Done"))
-            li.appendChild(donebtn)
+            let donebtn = document.createElement("button");
+            donebtn.className = "button";
+            donebtn.appendChild(document.createTextNode("Done"));
+            li.appendChild(donebtn);
 
-            donebtn.onclick = function(){
-                li.style.textDecoration = "line-through"
+            donebtn.onclick = function() {
+                li.classList.toggle("done");
             }
+
+            document.getElementById("data").appendChild(li);
             document.getElementById("planTask").value = "";
-            }
- 
+        }
     </script>
 </body>
 </html>
