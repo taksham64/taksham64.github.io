@@ -5,44 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Clock</title>
     <style>
-        body{
+        body {
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: orange;
-            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 1s ease;
         }
-        .h1{
-            font-size: 30px;
+        h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #ff6f00;
+            text-shadow: 2px 2px 4px #000;
         }
-        .clock{
+        .clock {
             display: flex;
             justify-content: space-evenly;
-            font-size: 25px;
+            font-size: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 30px 60px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        #clock {
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 2px;
         }
     </style>
-    
 </head>
 <body>
-<script>
-    function updateTime() {
-        let d = new Date(); 
-        let h = d.getHours();
-        let m = d.getMinutes();
-        let s = d.getSeconds();
-        let p;
-            if ( h < 12) {
-                 p = "am"               
-            } else {
-                p = "pm"
+    <script>
+        function updateTime() {
+            //fetch date
+            let d = new Date(); 
+
+            //fetch hours
+            let h = d.getHours();
+            if( h < 10){
+                h = `0${h}`;
             }
-     let time = h + " : " + m + " : " + s + "  " + p
-     document.getElementById("clock").innerHTML=time;
-};
-setInterval(updateTime, 1000);
-updateTime();
-</script>
-<center>
-    <h1>Hey, I'm a digital clock  !!</h1>
-    <div class="clock" id="clock"></div>
-</center>
+
+            //fetch minutes    
+            let m = d.getMinutes();
+            if( m < 10){
+                m = `0${m}`;
+            }
+
+            //fetch seconds    
+            let s = d.getSeconds();
+            if( s < 10){
+                s = `0${s}`;
+            }
+
+            let p;
+            if (h < 12) {
+                p = "AM";
+            } else {
+                p = "PM";
+            }
+
+            let time = h + " : " + m + " : " + s + "  " + p;
+            document.getElementById("clock").innerHTML = time;
+
+            // Set the background color based on time
+            setBackground(h);
+        }
+
+        function setBackground(hour) {
+            let body = document.body;
+
+            if (hour >= 5 && hour < 10) {
+                // Morning (5 AM to 10 AM)
+                body.style.backgroundColor = '#FFFAF0'; // Floral white
+            } else if (hour >= 10 && hour < 17) {
+                // Day (10 AM to 5 PM)
+                body.style.backgroundColor = '#87CEEB'; // Sky blue
+            } else if (hour >= 17 && hour < 20) {
+                // Evening (5 PM to 8 PM)
+                body.style.backgroundColor = '#FFA07A'; // Light salmon
+            } else {
+                // Night (8 PM to 5 AM)
+                body.style.backgroundColor = '#2F4F4F'; // Dark slate gray
+            }
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+    <center>
+        <h1>Hey, I'm a digital clock  !!</h1>
+        <div class="clock" id="clock"></div>
+    </center>
 </body>
 </html>
