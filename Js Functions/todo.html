@@ -115,6 +115,78 @@
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            loadTasks();
+        });
+
+        function saveTasks() {
+            const taskList = document.querySelectorAll("#data li");
+            const tasks = [];
+            taskList.forEach(li => {
+                const task = {
+                    text: li.firstChild.textContent,
+                    done: li.classList.contains("done")
+                };
+                tasks.push(task);
+            });
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+
+        function loadTasks() {
+            const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            tasks.forEach(task => {
+                const li = document.createElement("li");
+                const textNode = document.createTextNode(task.text);
+                li.appendChild(textNode);
+
+                const editbtn = document.createElement("button");
+                editbtn.appendChild(document.createTextNode("Edit"));
+                li.appendChild(editbtn);
+                editbtn.className = "button";
+
+                editbtn.onclick = function() {
+                    let updatedTask = prompt("Enter your updated task here");
+                    if (updatedTask == "") {
+                        alert("Task cannot be empty");
+                    } else if (updatedTask === task.text) {
+                        alert("New task cannot be the same as the earlier one");
+                    } else {
+                        textNode.nodeValue = updatedTask;
+                        alert(`${task.text} has now been updated to ${updatedTask}`);
+                        saveTasks();
+                    }
+                }
+
+                const dltbtn = document.createElement("button");
+                dltbtn.appendChild(document.createTextNode("Delete"));
+                li.appendChild(dltbtn);
+                dltbtn.className = "button";
+
+                dltbtn.onclick = function() {
+                    let listitems = this.parentElement;
+                    listitems.remove();
+                    alert(`${task.text} has been removed`);
+                    saveTasks();
+                }
+
+                const donebtn = document.createElement("button");
+                donebtn.className = "button";
+                donebtn.appendChild(document.createTextNode("Done"));
+                li.appendChild(donebtn);
+
+                donebtn.onclick = function() {
+                    li.classList.toggle("done");
+                    saveTasks();
+                }
+
+                if (task.done) {
+                    li.classList.add("done");
+                }
+
+                document.getElementById("data").appendChild(li);
+            });
+        }
+
         function addTask() {
             let inputValue = document.getElementById("planTask").value;
             if (inputValue === "") {
@@ -142,6 +214,7 @@
                 } else {
                     textNode.nodeValue = updatedTask;
                     alert(`${inputValue} has now been updated to ${updatedTask}`);
+                    saveTasks();
                 }
             }
 
@@ -154,6 +227,7 @@
                 let listitems = this.parentElement;
                 listitems.remove();
                 alert(`${inputValue} has been removed`);
+                saveTasks();
             }
 
             let donebtn = document.createElement("button");
@@ -163,10 +237,12 @@
 
             donebtn.onclick = function() {
                 li.classList.toggle("done");
+                saveTasks();
             }
 
             document.getElementById("data").appendChild(li);
             document.getElementById("planTask").value = "";
+            saveTasks();
         }
     </script>
 </body>
