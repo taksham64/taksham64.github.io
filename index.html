@@ -23,6 +23,13 @@
         h2 {
             margin: 20px 0;
             font-size: 1.5em;
+            cursor: pointer;
+            user-select: none;
+            color: #ff8c00;
+        }
+        h2:hover {
+            color: #ff4500;
+            text-decoration: underline;
         }
         a {
             color: #ff8c00;
@@ -37,8 +44,25 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            background: rgba(30, 30, 30, 0.8); /* Darker background for content area */
+            background: rgba(30, 30, 30, 0.8);
             border-radius: 10px;
+        }
+        .resume-link {
+            background: #444;
+            color: #ff8c00;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 2px solid #ff8c00;
+            display: inline-block;
+            margin: 20px 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .resume-link:hover {
+            background: #ff8c00;
+            color: #000;
+            border-color: #ff8c00;
         }
         .section-title {
             margin: 20px 0;
@@ -60,10 +84,18 @@
             padding: 15px;
             margin-bottom: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            transition: box-shadow 0.3s;
+            transition: box-shadow 0.3s, background 0.3s;
         }
         .project-list .card:hover {
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+            background: #444;
+        }
+        .project-list .card a {
+            color: #ff8c00;
+            text-decoration: none;
+        }
+        .project-list .card a:hover {
+            color: #ff4500;
         }
         img {
             max-width: 100%;
@@ -79,12 +111,11 @@
         <h1>Welcome to Taksham's Portfolio</h1>
         
         <section>
+            <a href="/./myresume.html" class="resume-link">View My Resume</a>
+        </section>
+        
+        <section>
             <h2 class="section-title" onclick="toggleVisibility('frontendProjects')">Frontend Projects</h2>
-            <ul id="resume" class="project-list">
-                <li class="card">
-                    <h3>Resume <a href="/./myresume.html">My Resume</a></h3>
-                </li>
-            </ul>
             <ul id="frontendProjects" class="project-list">
                 <li class="card">
                     <h3>Project 1 - <a href="/./Frontend Project/photographysite.html">Photography's Website</a></h3>
