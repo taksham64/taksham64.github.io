@@ -1,115 +1,255 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salary Slip Generator - Mehak Unisex Salon</title>
-    <!-- Tailwind CSS for modern responsive styling -->
+
+    <title>Mehak Unisex Salon - Salary Slip Generator</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts Inter for professional typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Styling specifically optimized for paper/PDF layout when printing */
         @media print {
-            /* This removes the default browser headers (date, title) and footers (URL, page numbers) */
+
             @page {
-                size: auto;
-                margin: 0mm; 
+                size: A4;
+                margin: 12mm;
             }
+
+            body {
+                background: white !important;
+            }
+
             .no-print {
                 display: none !important;
             }
-            body {
-                background-color: #ffffff;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                /* Adds controlled, clean margin inside the page so the content doesn't touch the paper edge */
-                padding: 20mm 20mm 20mm 20mm !important;
-                margin: 0 !important;
-            }
+
             .print-full-width {
                 width: 100% !important;
                 max-width: 100% !important;
-                border: none !important;
+            }
+
+            .print\:shadow-none {
                 box-shadow: none !important;
+            }
+
+            .print\:border-0 {
+                border: 0 !important;
+            }
+
+            .print\:p-0 {
+                padding: 0 !important;
+            }
+
+            main {
+                display: block !important;
+                max-width: 100% !important;
                 padding: 0 !important;
                 margin: 0 !important;
-            }
-            .print-border {
-                border: 1px solid #e2e8f0 !important;
             }
         }
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen text-slate-800">
 
-    <!-- Header/Banner for the Web App (Hidden during printing) -->
-    <header class="bg-gradient-to-r from-amber-700 to-amber-900 text-white shadow-md py-4 px-6 no-print flex justify-between items-center">
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header
+        class="bg-gradient-to-r from-amber-700 to-amber-900 text-white shadow-md py-4 px-6 no-print flex justify-between items-center">
+
         <div class="flex items-center gap-3">
+
             <div class="bg-white/10 p-2 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="h-6 w-6 text-amber-200"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor">
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+
                 </svg>
+
             </div>
+
             <div>
-                <h1 class="text-xl font-extrabold tracking-wide">MEHAK UNISEX SALON</h1>
-                <p class="text-xs text-amber-200">Interactive Salary Slip Generator Console</p>
+
+                <h1 class="text-xl font-extrabold tracking-wide">
+                    MEHAK UNISEX SALON
+                </h1>
+
+                <p class="text-xs text-amber-200">
+                    Interactive Salary Slip Generator Console
+                </p>
+
             </div>
+
         </div>
+
         <div>
-            <button onclick="window.print()" class="bg-amber-600 hover:bg-amber-500 text-white font-semibold py-2 px-4 rounded-lg shadow-sm flex items-center gap-2 transition duration-200 text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4" />
+
+            <button onclick="window.print()"
+                    class="bg-amber-600 hover:bg-amber-500 text-white font-semibold py-2 px-4 rounded-lg shadow-sm flex items-center gap-2 transition duration-200 text-sm">
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="h-4 w-4"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor">
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M6 9V3h12v6M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v7H6v-7z" />
+
                 </svg>
+
                 Print / Save PDF
+
             </button>
+
         </div>
+
     </header>
 
-    <!-- Two-column workspace: left for parameters, right for live-rendered salary slip -->
-    <main class="max-w-7xl mx-auto p-4 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        <!-- Interactive Inputs Panel (Hidden during printing) -->
-        <section class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-6 no-print h-fit">
+
+    <!-- =========================================================
+         MAIN WORKSPACE
+    ========================================================== -->
+
+    <main
+        class="max-w-7xl mx-auto p-4 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+
+        <!-- =====================================================
+             LEFT: INPUT PANEL
+        ====================================================== -->
+
+        <section
+            class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-6 no-print h-fit">
+
+
+            <!-- PANEL HEADER -->
+
             <div class="border-b border-slate-100 pb-3">
+
                 <h2 class="text-lg font-bold text-slate-950 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="h-5 w-5 text-amber-700"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+
                     </svg>
+
                     Slip Specifications
+
                 </h2>
-                <p class="text-xs text-slate-500 mt-1">Adjust fields below to see real-time recalculations.</p>
+
+                <p class="text-xs text-slate-500 mt-1">
+                    Adjust fields below to see real-time recalculations.
+                </p>
+
             </div>
 
-            <!-- Employee Info Block -->
+
+            <!-- =================================================
+                 EMPLOYEE PROFILE
+            ================================================== -->
+
             <div class="space-y-4">
-                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Employee Profile</h3>
+
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    Employee Profile
+                </h3>
+
                 <div>
-                    <label class="block text-xs font-medium text-slate-600 mb-1">Employee Name</label>
-                    <input type="text" id="empName" value="Bobby" class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm font-medium outline-none transition" placeholder="e.g. Bobby">
+
+                    <label class="block text-xs font-medium text-slate-600 mb-1">
+                        Employee Name
+                    </label>
+
+                    <input type="text"
+                           id="empName"
+                           value="Bobby"
+                           placeholder="e.g. Bobby"
+                           class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm font-medium outline-none transition">
+
                 </div>
+
+
                 <div class="grid grid-cols-2 gap-4">
+
                     <div>
-                        <label class="block text-xs font-medium text-slate-600 mb-1">Designation</label>
-                        <input type="text" id="empDesignation" value="Salon Staff / Stylist" class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
+                        <label class="block text-xs font-medium text-slate-600 mb-1">
+                            Designation
+                        </label>
+
+                        <input type="text"
+                               id="empDesignation"
+                               value="Salon Staff / Stylist"
+                               class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
                     </div>
+
+
                     <div>
-                        <label class="block text-xs font-medium text-slate-600 mb-1">Department</label>
-                        <input type="text" id="empDepartment" value="Operations" class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
+                        <label class="block text-xs font-medium text-slate-600 mb-1">
+                            Department
+                        </label>
+
+                        <input type="text"
+                               id="empDepartment"
+                               value="Operations"
+                               class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
                     </div>
+
                 </div>
+
             </div>
 
-            <!-- Calendar and pay period parameters -->
+
+            <!-- =================================================
+                 PAY PERIOD
+            ================================================== -->
+
             <div class="space-y-4 pt-4 border-t border-slate-100">
-                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Pay Period & Calendar</h3>
+
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    Pay Period & Calendar
+                </h3>
+
+
                 <div class="grid grid-cols-2 gap-4">
+
                     <div>
-                        <label class="block text-xs font-medium text-slate-600 mb-1">Payroll Month</label>
-                        <select id="payrollMonth" class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
+                        <label class="block text-xs font-medium text-slate-600 mb-1">
+                            Payroll Month
+                        </label>
+
+                        <select id="payrollMonth"
+                                class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
                             <option value="0">January</option>
                             <option value="1">February</option>
                             <option value="2">March</option>
@@ -122,440 +262,1950 @@
                             <option value="9">October</option>
                             <option value="10">November</option>
                             <option value="11">December</option>
+
                         </select>
+
                     </div>
+
+
                     <div>
-                        <label class="block text-xs font-medium text-slate-600 mb-1">Payroll Year</label>
-                        <input type="number" id="payrollYear" value="2026" min="2020" max="2100" class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
+                        <label class="block text-xs font-medium text-slate-600 mb-1">
+                            Payroll Year
+                        </label>
+
+                        <input type="number"
+                               id="payrollYear"
+                               value="2026"
+                               min="2020"
+                               max="2100"
+                               class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
                     </div>
+
                 </div>
 
-                <!-- Custom Start and End dates for Mid-month Joiners -->
+
                 <div class="grid grid-cols-2 gap-4">
+
                     <div>
-                        <label class="block text-xs font-medium text-slate-600 mb-1">Period Start Date</label>
-                        <input type="date" id="payPeriodStart" class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
+                        <label class="block text-xs font-medium text-slate-600 mb-1">
+                            Period Start Date
+                        </label>
+
+                        <input type="date"
+                               id="payPeriodStart"
+                               class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
                     </div>
+
+
                     <div>
-                        <label class="block text-xs font-medium text-slate-600 mb-1">Period End Date</label>
-                        <input type="date" id="payPeriodEnd" class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
+                        <label class="block text-xs font-medium text-slate-600 mb-1">
+                            Period End Date
+                        </label>
+
+                        <input type="date"
+                               id="payPeriodEnd"
+                               class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
                     </div>
+
                 </div>
 
-                <div class="bg-amber-50 border border-amber-200/60 rounded-xl p-3 flex justify-between text-xs font-semibold text-amber-900">
-                    <span>Month Days: <span id="infoTotalMonthDays" class="font-bold">30</span></span>
-                    <span>Active Period Days: <span id="infoActiveDays" class="font-bold">30</span></span>
+
+                <div
+                    class="bg-amber-50 border border-amber-200/60 rounded-xl p-3 flex justify-between text-xs font-semibold text-amber-900">
+
+                    <span>
+                        Month Days:
+                        <span id="infoTotalMonthDays" class="font-bold">
+                            30
+                        </span>
+                    </span>
+
+                    <span>
+                        Active Period Days:
+                        <span id="infoActiveDays" class="font-bold">
+                            30
+                        </span>
+                    </span>
+
                 </div>
+
             </div>
 
-            <!-- Base Salary, leaves and details controls -->
+
+            <!-- =================================================
+                 SALARY ADJUSTMENTS
+            ================================================== -->
+
             <div class="space-y-4 pt-4 border-t border-slate-100">
-                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Salary Adjustments</h3>
+
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    Salary Adjustments
+                </h3>
+
+
                 <div class="grid grid-cols-2 gap-4">
+
                     <div>
-                        <label class="block text-xs font-medium text-slate-600 mb-1">Monthly Salary (₹)</label>
-                        <input type="number" id="baseSalary" value="21000" min="0" class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm font-semibold text-slate-800 outline-none transition">
+
+                        <label class="block text-xs font-medium text-slate-600 mb-1">
+                            Monthly Salary (₹)
+                        </label>
+
+                        <input type="number"
+                               id="baseSalary"
+                               value="21000"
+                               min="0"
+                               step="0.01"
+                               class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm font-semibold text-slate-800 outline-none transition">
+
                     </div>
+
+
                     <div>
-                        <label class="block text-xs font-medium text-slate-600 mb-1">Unpaid Leaves (Days)</label>
-                        <input type="number" id="unpaidLeaves" value="8" min="0" max="31" class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm font-semibold text-red-600 outline-none transition">
+
+                        <label class="block text-xs font-medium text-slate-600 mb-1">
+                            Unpaid Leaves (Days)
+                        </label>
+
+                        <input type="number"
+                               id="unpaidLeaves"
+                               value="8"
+                               min="0"
+                               max="31"
+                               step="0.01"
+                               class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm font-semibold text-red-600 outline-none transition">
+
                     </div>
+
                 </div>
+
+
                 <div>
-                    <label class="block text-xs font-medium text-slate-600 mb-1">Other Deductions (₹)</label>
-                    <input type="number" id="otherDeductions" value="0" min="0" class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
+                    <label class="block text-xs font-medium text-slate-600 mb-1">
+                        Other Deductions (₹)
+                    </label>
+
+                    <input type="number"
+                           id="otherDeductions"
+                           value="0"
+                           min="0"
+                           step="0.01"
+                           class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
                 </div>
+
             </div>
+
+
+            <!-- =================================================
+                 INCENTIVE & OVERTIME
+            ================================================== -->
+
+            <div class="space-y-4 pt-4 border-t border-slate-100">
+
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    Incentive & Overtime
+                </h3>
+
+
+                <!-- INCENTIVE -->
+
+                <div class="space-y-2">
+
+                    <label class="block text-xs font-medium text-slate-600">
+                        Incentive
+                    </label>
+
+
+                    <div class="grid grid-cols-2 gap-3">
+
+                        <select id="incentiveType"
+                                class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
+                            <option value="none">
+                                None
+                            </option>
+
+                            <option value="percentage">
+                                Percentage
+                            </option>
+
+                            <option value="flat">
+                                Flat Amount
+                            </option>
+
+                        </select>
+
+
+                        <input type="number"
+                               id="incentiveValue"
+                               value="0"
+                               min="0"
+                               step="0.01"
+                               placeholder="Amount"
+                               class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
+                    </div>
+
+
+                    <p id="incentiveHelp"
+                       class="text-[10px] text-slate-400">
+                        Select Flat Amount to enter a fixed ₹ amount.
+                    </p>
+
+                </div>
+
+
+                <!-- OVERTIME -->
+
+                <div class="space-y-2">
+
+                    <label class="block text-xs font-medium text-slate-600">
+                        Overtime
+                    </label>
+
+
+                    <div class="grid grid-cols-2 gap-3">
+
+                        <select id="overtimeType"
+                                class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
+                            <option value="none">
+                                None
+                            </option>
+
+                            <option value="percentage">
+                                Percentage
+                            </option>
+
+                            <option value="flat">
+                                Flat Amount
+                            </option>
+
+                        </select>
+
+
+                        <input type="number"
+                               id="overtimeValue"
+                               value="0"
+                               min="0"
+                               step="0.01"
+                               placeholder="Amount"
+                               class="w-full bg-slate-50 border border-slate-200 focus:border-amber-600 focus:bg-white rounded-lg px-3 py-2 text-sm outline-none transition">
+
+                    </div>
+
+
+                    <p id="overtimeHelp"
+                       class="text-[10px] text-slate-400">
+                        Select Flat Amount to enter a fixed ₹ amount.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PRINT BUTTON
+            ================================================== -->
 
             <div class="pt-2">
-                <button onclick="window.print()" class="w-full py-3 bg-amber-700 hover:bg-amber-800 text-white rounded-xl shadow-md font-semibold text-sm transition duration-150 flex items-center justify-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4" />
+
+                <button onclick="window.print()"
+                        class="w-full py-3 bg-amber-700 hover:bg-amber-800 text-white rounded-xl shadow-md font-semibold text-sm transition duration-150 flex items-center justify-center gap-2">
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="h-5 w-5"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M6 9V3h12v6M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v7H6v-7z" />
+
                     </svg>
+
                     Print or Save Payslip PDF
+
                 </button>
+
             </div>
+
         </section>
 
-        <!-- Payslip Document View Container -->
-        <section class="lg:col-span-7 bg-white p-6 md:p-12 shadow-xl rounded-2xl border border-slate-200 print-full-width print:shadow-none print:border-0 print:p-0">
-            
-            <!-- Branding Header -->
+
+        <!-- =====================================================
+             RIGHT: PAYSLIP
+        ====================================================== -->
+
+        <section
+            class="lg:col-span-7 bg-white p-6 md:p-12 shadow-xl rounded-2xl border border-slate-200 print-full-width print:shadow-none print:border-0 print:p-0">
+
+
+            <!-- =================================================
+                 SALON HEADER
+            ================================================== -->
+
             <div class="border-b-2 border-amber-600 pb-5 text-center">
-                <h2 class="text-3xl font-black tracking-wider text-slate-800 uppercase">Mehak Unisex Salon</h2>
+
+                <h2 class="text-3xl font-black tracking-wider text-slate-800 uppercase">
+                    Mehak Unisex Salon
+                </h2>
+
                 <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
-                    SCO 109, Amrawati Complex, Amrawati Apartments, Baddi, Himachal Pradesh - 173205
+                    SCO 109, Amrawati Complex, Amrawati Apartments,
+                    Baddi, Himachal Pradesh - 173205
                 </p>
+
                 <p class="text-xs text-slate-600 mt-1 font-semibold">
                     Contact: +91 8894415730
                 </p>
-                <div class="inline-block bg-amber-50 text-amber-800 text-[11px] font-extrabold tracking-wider px-3.5 py-1 rounded-full mt-3.5 border border-amber-200 uppercase">
-                    Salary Slip - <span id="slipPeriodHeader">June 2026</span>
+
+                <div
+                    class="inline-block bg-amber-50 text-amber-800 text-[11px] font-extrabold tracking-wider px-3.5 py-1 rounded-full mt-3.5 border border-amber-200 uppercase">
+
+                    Salary Slip -
+                    <span id="slipPeriodHeader">
+                        June 2026
+                    </span>
+
                 </div>
+
             </div>
 
-            <!-- Metadata/Info Table Segment -->
+
+            <!-- =================================================
+                 EMPLOYEE INFORMATION
+            ================================================== -->
+
             <div class="grid grid-cols-2 gap-6 py-6 border-b border-slate-100 text-sm">
-                <div>
-                    <h3 class="text-[10px] uppercase tracking-wider text-slate-400 font-extrabold mb-2.5">Employee Details</h3>
-                    <table class="w-full text-left">
-                        <tr class="align-top">
-                            <td class="py-1 text-slate-500 w-1/3 text-xs">Name:</td>
-                            <td class="py-1 font-bold text-slate-800 text-xs" id="slipName">Bobby</td>
-                        </tr>
-                        <tr class="align-top">
-                            <td class="py-1 text-slate-500 text-xs">Designation:</td>
-                            <td class="py-1 text-slate-700 text-xs" id="slipDesignation">Salon Staff / Stylist</td>
-                        </tr>
-                        <tr class="align-top">
-                            <td class="py-1 text-slate-500 text-xs">Department:</td>
-                            <td class="py-1 text-slate-700 text-xs" id="slipDepartment">Operations</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="pl-6 border-l border-slate-100">
-                    <h3 class="text-[10px] uppercase tracking-wider text-slate-400 font-extrabold mb-2.5">Salary & Attendance</h3>
-                    <table class="w-full text-left">
-                        <tr class="align-top">
-                            <td class="py-1 text-slate-500 w-1/2 text-xs">Pay Period:</td>
-                            <td class="py-1 text-slate-700 text-xs font-semibold" id="slipPayPeriod">June 1 - June 30</td>
-                        </tr>
-                        <tr class="align-top">
-                            <td class="py-1 text-slate-500 text-xs">Month Days:</td>
-                            <td class="py-1 text-slate-700 text-xs" id="slipTotalDays">30 Days</td>
-                        </tr>
-                        <tr class="align-top">
-                            <td class="py-1 text-slate-500 text-xs">Active Days:</td>
-                            <td class="py-1 text-slate-700 text-xs font-semibold" id="slipActiveDays">30 Days</td>
-                        </tr>
-                        <tr class="align-top">
-                            <td class="py-1 text-slate-500 text-xs text-red-600">Unpaid Leaves:</td>
-                            <td class="py-1 text-red-600 text-xs font-bold" id="slipLeaves">8 Days (LWP)</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
 
-            <!-- Details of Earnings & Deductions -->
-            <div class="my-6 overflow-x-auto">
-                <table class="w-full text-left border-collapse border border-slate-200">
-                    <thead>
-                        <tr class="bg-slate-50 border-b border-slate-200 text-[10px] uppercase tracking-wider text-slate-500">
-                            <th class="py-2.5 px-4 font-bold border-r border-slate-200">Earnings</th>
-                            <th class="py-2.5 px-4 text-right font-bold border-r border-slate-200">Amount (₹)</th>
-                            <th class="py-2.5 px-4 font-bold border-r border-slate-200">Deductions</th>
-                            <th class="py-2.5 px-4 text-right font-bold">Amount (₹)</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-xs text-slate-700 divide-y divide-slate-200">
-                        <tr>
-                            <td class="py-3 px-4 font-medium text-slate-800 border-r border-slate-200">
-                                <span class="font-semibold block">Basic Earned Salary</span>
-                                <span class="text-[10px] text-slate-500" id="slipEarningsSubtext">Calculated for full month</span>
+                <div>
+
+                    <h3 class="text-[10px] uppercase tracking-wider text-slate-400 font-extrabold mb-2.5">
+                        Employee Details
+                    </h3>
+
+
+                    <table class="w-full text-left">
+
+                        <tr class="align-top">
+
+                            <td class="py-1 text-slate-500 w-1/3 text-xs">
+                                Name:
                             </td>
-                            <td class="py-3 px-4 text-right font-semibold text-slate-800 border-r border-slate-200" id="slipBaseSalary">21,000.00</td>
-                            <td class="py-3 px-4 text-red-600 border-r border-slate-200" id="slipLeaveBreakdownLabel">Leave Without Pay (8 Days)</td>
-                            <td class="py-3 px-4 text-right font-bold text-red-600" id="slipLeaveDeduction">5,600.00</td>
+
+                            <td class="py-1 font-bold text-slate-800 text-xs"
+                                id="slipName">
+                                Bobby
+                            </td>
+
                         </tr>
+
+
+                        <tr class="align-top">
+
+                            <td class="py-1 text-slate-500 text-xs">
+                                Designation:
+                            </td>
+
+                            <td class="py-1 text-slate-700 text-xs"
+                                id="slipDesignation">
+                                Salon Staff / Stylist
+                            </td>
+
+                        </tr>
+
+
+                        <tr class="align-top">
+
+                            <td class="py-1 text-slate-500 text-xs">
+                                Department:
+                            </td>
+
+                            <td class="py-1 text-slate-700 text-xs"
+                                id="slipDepartment">
+                                Operations
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+
+
+                <div class="pl-6 border-l border-slate-100">
+
+                    <h3 class="text-[10px] uppercase tracking-wider text-slate-400 font-extrabold mb-2.5">
+                        Salary & Attendance
+                    </h3>
+
+
+                    <table class="w-full text-left">
+
+                        <tr class="align-top">
+
+                            <td class="py-1 text-slate-500 w-1/2 text-xs">
+                                Pay Period:
+                            </td>
+
+                            <td class="py-1 text-slate-700 text-xs font-semibold"
+                                id="slipPayPeriod">
+                                June 1 - June 30
+                            </td>
+
+                        </tr>
+
+
+                        <tr class="align-top">
+
+                            <td class="py-1 text-slate-500 text-xs">
+                                Month Days:
+                            </td>
+
+                            <td class="py-1 text-slate-700 text-xs"
+                                id="slipTotalDays">
+                                30 Days
+                            </td>
+
+                        </tr>
+
+
+                        <tr class="align-top">
+
+                            <td class="py-1 text-slate-500 text-xs">
+                                Active Days:
+                            </td>
+
+                            <td class="py-1 text-slate-700 text-xs font-semibold"
+                                id="slipActiveDays">
+                                30 Days
+                            </td>
+
+                        </tr>
+
+
+                        <tr class="align-top">
+
+                            <td class="py-1 text-slate-500 text-xs text-red-600">
+                                Unpaid Leaves:
+                            </td>
+
+                            <td class="py-1 text-red-600 text-xs font-bold"
+                                id="slipLeaves">
+                                8 Days (LWP)
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 EARNINGS & DEDUCTIONS
+            ================================================== -->
+
+            <div class="my-6 overflow-x-auto">
+
+                <table class="w-full text-left border-collapse border border-slate-200">
+
+                    <thead>
+
+                        <tr
+                            class="bg-slate-50 border-b border-slate-200 text-[10px] uppercase tracking-wider text-slate-500">
+
+                            <th class="py-2.5 px-4 font-bold border-r border-slate-200">
+                                Earnings
+                            </th>
+
+                            <th class="py-2.5 px-4 text-right font-bold border-r border-slate-200">
+                                Amount (₹)
+                            </th>
+
+                            <th class="py-2.5 px-4 font-bold border-r border-slate-200">
+                                Deductions
+                            </th>
+
+                            <th class="py-2.5 px-4 text-right font-bold">
+                                Amount (₹)
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody class="text-xs text-slate-700 divide-y divide-slate-200">
+
+
+                        <!-- =====================================
+                             BASIC SALARY
+                        ====================================== -->
+
                         <tr>
-                            <td class="py-3 px-4 border-r border-slate-200"></td>
-                            <td class="py-3 px-4 text-right border-r border-slate-200"></td>
-                            <td class="py-3 px-4 border-r border-slate-200 text-slate-500">Other Deductions</td>
-                            <td class="py-3 px-4 text-right text-slate-700" id="slipOtherDeductions">0.00</td>
+
+                            <td class="py-3 px-4 font-medium text-slate-800 border-r border-slate-200">
+
+                                <span class="font-semibold block">
+                                    Basic Earned Salary
+                                </span>
+
+                                <span id="slipEarningsSubtext"
+                                      class="text-[10px] text-slate-500">
+                                    Calculated for full month
+                                </span>
+
+                            </td>
+
+
+                            <td id="slipBaseSalary"
+                                class="py-3 px-4 text-right font-semibold text-slate-800 border-r border-slate-200">
+                                21,000.00
+                            </td>
+
+
+                            <td id="slipLeaveBreakdownLabel"
+                                class="py-3 px-4 text-red-600 border-r border-slate-200">
+                                Leave Without Pay (8 Days)
+                            </td>
+
+
+                            <td id="slipLeaveDeduction"
+                                class="py-3 px-4 text-right font-bold text-red-600">
+                                5,600.00
+                            </td>
+
                         </tr>
-                        <!-- Summary Totals -->
-                        <tr class="bg-slate-50 font-bold border-t border-slate-200 text-xs">
-                            <td class="py-3 px-4 text-slate-800 border-r border-slate-200">Gross Period Earnings</td>
-                            <td class="py-3 px-4 text-right text-slate-800 border-r border-slate-200" id="slipGrossEarnings">₹21,000.00</td>
-                            <td class="py-3 px-4 border-r border-slate-200 text-slate-800">Total Deductions</td>
-                            <td class="py-3 px-4 text-right text-red-600 font-extrabold" id="slipTotalDeductions">₹5,600.00</td>
+
+
+                        <!-- =====================================
+                             INCENTIVE
+                        ====================================== -->
+
+                        <tr>
+
+                            <td class="py-3 px-4 font-medium text-slate-800 border-r border-slate-200">
+
+                                <span class="font-semibold block">
+                                    Incentive
+                                </span>
+
+                                <span id="slipIncentiveSubtext"
+                                      class="text-[10px] text-slate-500">
+                                    No incentive
+                                </span>
+
+                            </td>
+
+
+                            <td id="slipIncentive"
+                                class="py-3 px-4 text-right font-semibold text-green-700 border-r border-slate-200">
+                                0.00
+                            </td>
+
+
+                            <td class="py-3 px-4 border-r border-slate-200">
+                            </td>
+
+
+                            <td class="py-3 px-4 text-right">
+                            </td>
+
                         </tr>
+
+
+                        <!-- =====================================
+                             OVERTIME
+                        ====================================== -->
+
+                        <tr>
+
+                            <td class="py-3 px-4 font-medium text-slate-800 border-r border-slate-200">
+
+                                <span class="font-semibold block">
+                                    Overtime
+                                </span>
+
+                                <span id="slipOvertimeSubtext"
+                                      class="text-[10px] text-slate-500">
+                                    No overtime
+                                </span>
+
+                            </td>
+
+
+                            <td id="slipOvertime"
+                                class="py-3 px-4 text-right font-semibold text-green-700 border-r border-slate-200">
+                                0.00
+                            </td>
+
+
+                            <td class="py-3 px-4 border-r border-slate-200">
+                            </td>
+
+
+                            <td class="py-3 px-4 text-right">
+                            </td>
+
+                        </tr>
+
+
+                        <!-- =====================================
+                             OTHER DEDUCTIONS
+                        ====================================== -->
+
+                        <tr>
+
+                            <td class="py-3 px-4 border-r border-slate-200">
+                            </td>
+
+                            <td class="py-3 px-4 text-right border-r border-slate-200">
+                            </td>
+
+
+                            <td class="py-3 px-4 border-r border-slate-200 text-slate-500">
+                                Other Deductions
+                            </td>
+
+
+                            <td id="slipOtherDeductions"
+                                class="py-3 px-4 text-right text-slate-700">
+                                0.00
+                            </td>
+
+                        </tr>
+
+
+                        <!-- =====================================
+                             TOTALS
+                        ====================================== -->
+
+                        <tr
+                            class="bg-slate-50 font-bold border-t border-slate-200 text-xs">
+
+                            <td class="py-3 px-4 text-slate-800 border-r border-slate-200">
+                                Gross Period Earnings
+                            </td>
+
+
+                            <td id="slipGrossEarnings"
+                                class="py-3 px-4 text-right text-slate-800 border-r border-slate-200">
+                                ₹21,000.00
+                            </td>
+
+
+                            <td class="py-3 px-4 border-r border-slate-200 text-slate-800">
+                                Total Deductions
+                            </td>
+
+
+                            <td id="slipTotalDeductions"
+                                class="py-3 px-4 text-right text-red-600 font-extrabold">
+                                ₹5,600.00
+                            </td>
+
+                        </tr>
+
                     </tbody>
+
                 </table>
+
             </div>
 
-            <!-- Net Take-home Pay container displaying words on-the-fly -->
-            <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+
+            <!-- =================================================
+                 NET PAY
+            ================================================== -->
+
+            <div
+                class="bg-amber-50 border border-amber-200 rounded-xl p-5 flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+
                 <div class="text-center sm:text-left">
-                    <span class="text-[10px] font-bold text-amber-800 uppercase tracking-wider block mb-0.5">Net Take-home Salary</span>
-                    <span class="text-xs text-slate-600 italic font-medium" id="slipNetInWords">Rupees Fifteen Thousand Four Hundred Only</span>
+
+                    <span
+                        class="text-[10px] font-bold text-amber-800 uppercase tracking-wider block mb-0.5">
+                        Net Take-home Salary
+                    </span>
+
+                    <span id="slipNetInWords"
+                          class="text-xs text-slate-600 italic font-medium">
+                        Rupees Fifteen Thousand Four Hundred Only
+                    </span>
+
                 </div>
+
+
                 <div class="text-right">
-                    <span class="text-2xl font-black text-amber-900" id="slipNetPay">₹15,400.00</span>
+
+                    <span id="slipNetPay"
+                          class="text-2xl font-black text-amber-900">
+                        ₹15,400.00
+                    </span>
+
                 </div>
+
             </div>
 
-            <!-- Signatures Column Footer -->
+
+            <!-- =================================================
+                 SIGNATURES
+            ================================================== -->
+
             <div class="grid grid-cols-2 gap-12 pt-14 text-center text-xs text-slate-600">
+
                 <div>
+
                     <div class="border-t border-slate-300 pt-3 mx-auto w-4/5">
-                        <p class="font-bold text-slate-800" id="sigEmployeeName">Bobby</p>
-                        <p class="text-[10px] text-slate-400 mt-0.5">Employee Signature</p>
+
+                        <p id="sigEmployeeName"
+                           class="font-bold text-slate-800">
+                            Bobby
+                        </p>
+
+                        <p class="text-[10px] text-slate-400 mt-0.5">
+                            Employee Signature
+                        </p>
+
                     </div>
+
                 </div>
+
+
                 <div>
+
                     <div class="border-t border-slate-300 pt-3 mx-auto w-4/5">
-                        <p class="font-bold text-slate-800">Authorized Signatory</p>
-                        <p class="text-[10px] text-slate-400 mt-0.5">For Mehak Unisex Salon</p>
+
+                        <p class="font-bold text-slate-800">
+                            Authorized Signatory
+                        </p>
+
+                        <p class="text-[10px] text-slate-400 mt-0.5">
+                            For Mehak Unisex Salon
+                        </p>
+
                     </div>
+
                 </div>
+
             </div>
 
-            <!-- Verification System Note -->
-            <div class="text-center text-[9px] text-slate-400 mt-12 pt-5 border-t border-slate-100 uppercase tracking-wider">
-                This is a system-generated salary slip for Mehak Unisex Salon and does not require physical stamp validation unless requested.
+
+            <!-- =================================================
+                 FOOTER NOTE
+            ================================================== -->
+
+            <div
+                class="text-center text-[9px] text-slate-400 mt-12 pt-5 border-t border-slate-100 uppercase tracking-wider">
+
+                This is a system-generated salary slip for
+                Mehak Unisex Salon and does not require physical
+                stamp validation unless requested.
+
             </div>
 
         </section>
+
     </main>
 
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
     <script>
-        // Array of full month names
+
+        // ========================================================
+        // MONTH CONSTANTS
+        // ========================================================
+
         const MONTH_NAMES = [
-            "January", "February", "March", "April", "May", "June", 
-            "July", "August", "September", "October", "November", "December"
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
         ];
 
-        // Object containing default days mapping for standard non-leap years
-        const DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-        // Core UI DOM elements 
-        const inputEmpName = document.getElementById('empName');
-        const inputDesignation = document.getElementById('empDesignation');
-        const inputDepartment = document.getElementById('empDepartment');
-        const selectMonth = document.getElementById('payrollMonth');
-        const inputYear = document.getElementById('payrollYear');
-        const inputPayPeriodStart = document.getElementById('payPeriodStart');
-        const inputPayPeriodEnd = document.getElementById('payPeriodEnd');
-        const inputBaseSalary = document.getElementById('baseSalary');
-        const inputUnpaidLeaves = document.getElementById('unpaidLeaves');
-        const inputOtherDeductions = document.getElementById('otherDeductions');
+        const DAYS_IN_MONTH = [
+            31, 28, 31, 30, 31, 30,
+            31, 31, 30, 31, 30, 31
+        ];
 
-        // Document preview DOM elements to be updated dynamically
-        const slipPeriodHeader = document.getElementById('slipPeriodHeader');
-        const slipName = document.getElementById('slipName');
-        const slipDesignation = document.getElementById('slipDesignation');
-        const slipDepartment = document.getElementById('slipDepartment');
-        const slipPayPeriod = document.getElementById('slipPayPeriod');
-        const slipTotalDays = document.getElementById('slipTotalDays');
-        const slipActiveDays = document.getElementById('slipActiveDays');
-        const slipLeaves = document.getElementById('slipLeaves');
-        const slipBaseSalary = document.getElementById('slipBaseSalary');
-        const slipEarningsSubtext = document.getElementById('slipEarningsSubtext');
-        const slipLeaveBreakdownLabel = document.getElementById('slipLeaveBreakdownLabel');
-        const slipLeaveDeduction = document.getElementById('slipLeaveDeduction');
-        const slipOtherDeductions = document.getElementById('slipOtherDeductions');
-        const slipGrossEarnings = document.getElementById('slipGrossEarnings');
-        const slipTotalDeductions = document.getElementById('slipTotalDeductions');
-        const slipNetPay = document.getElementById('slipNetPay');
-        const slipNetInWords = document.getElementById('slipNetInWords');
-        const sigEmployeeName = document.getElementById('sigEmployeeName');
 
-        // Info block badges
-        const infoTotalMonthDays = document.getElementById('infoTotalMonthDays');
-        const infoActiveDays = document.getElementById('infoActiveDays');
+        // ========================================================
+        // INPUT ELEMENTS
+        // ========================================================
 
-        // Event listener setup for live visual update
+        const inputEmpName =
+            document.getElementById("empName");
+
+        const inputDesignation =
+            document.getElementById("empDesignation");
+
+        const inputDepartment =
+            document.getElementById("empDepartment");
+
+        const selectMonth =
+            document.getElementById("payrollMonth");
+
+        const inputYear =
+            document.getElementById("payrollYear");
+
+        const inputPayPeriodStart =
+            document.getElementById("payPeriodStart");
+
+        const inputPayPeriodEnd =
+            document.getElementById("payPeriodEnd");
+
+        const inputBaseSalary =
+            document.getElementById("baseSalary");
+
+        const inputUnpaidLeaves =
+            document.getElementById("unpaidLeaves");
+
+        const inputOtherDeductions =
+            document.getElementById("otherDeductions");
+
+
+        // ========================================================
+        // INCENTIVE / OVERTIME INPUTS
+        // ========================================================
+
+        const inputIncentiveType =
+            document.getElementById("incentiveType");
+
+        const inputIncentiveValue =
+            document.getElementById("incentiveValue");
+
+        const inputOvertimeType =
+            document.getElementById("overtimeType");
+
+        const inputOvertimeValue =
+            document.getElementById("overtimeValue");
+
+        const incentiveHelp =
+            document.getElementById("incentiveHelp");
+
+        const overtimeHelp =
+            document.getElementById("overtimeHelp");
+
+
+        // ========================================================
+        // PAYSLIP ELEMENTS
+        // ========================================================
+
+        const slipPeriodHeader =
+            document.getElementById("slipPeriodHeader");
+
+        const slipName =
+            document.getElementById("slipName");
+
+        const slipDesignation =
+            document.getElementById("slipDesignation");
+
+        const slipDepartment =
+            document.getElementById("slipDepartment");
+
+        const slipPayPeriod =
+            document.getElementById("slipPayPeriod");
+
+        const slipTotalDays =
+            document.getElementById("slipTotalDays");
+
+        const slipActiveDays =
+            document.getElementById("slipActiveDays");
+
+        const slipLeaves =
+            document.getElementById("slipLeaves");
+
+        const slipBaseSalary =
+            document.getElementById("slipBaseSalary");
+
+        const slipEarningsSubtext =
+            document.getElementById("slipEarningsSubtext");
+
+        const slipLeaveBreakdownLabel =
+            document.getElementById("slipLeaveBreakdownLabel");
+
+        const slipLeaveDeduction =
+            document.getElementById("slipLeaveDeduction");
+
+        const slipIncentive =
+            document.getElementById("slipIncentive");
+
+        const slipIncentiveSubtext =
+            document.getElementById("slipIncentiveSubtext");
+
+        const slipOvertime =
+            document.getElementById("slipOvertime");
+
+        const slipOvertimeSubtext =
+            document.getElementById("slipOvertimeSubtext");
+
+        const slipOtherDeductions =
+            document.getElementById("slipOtherDeductions");
+
+        const slipGrossEarnings =
+            document.getElementById("slipGrossEarnings");
+
+        const slipTotalDeductions =
+            document.getElementById("slipTotalDeductions");
+
+        const slipNetPay =
+            document.getElementById("slipNetPay");
+
+        const slipNetInWords =
+            document.getElementById("slipNetInWords");
+
+        const sigEmployeeName =
+            document.getElementById("sigEmployeeName");
+
+
+        // ========================================================
+        // INFO BADGES
+        // ========================================================
+
+        const infoTotalMonthDays =
+            document.getElementById("infoTotalMonthDays");
+
+        const infoActiveDays =
+            document.getElementById("infoActiveDays");
+
+
+        // ========================================================
+        // LIVE INPUTS
+        // ========================================================
+
         const liveInputs = [
-            inputEmpName, inputDesignation, inputDepartment, selectMonth, 
-            inputYear, inputPayPeriodStart, inputPayPeriodEnd, inputBaseSalary, 
-            inputUnpaidLeaves, inputOtherDeductions
+
+            inputEmpName,
+            inputDesignation,
+            inputDepartment,
+
+            selectMonth,
+            inputYear,
+
+            inputPayPeriodStart,
+            inputPayPeriodEnd,
+
+            inputBaseSalary,
+            inputUnpaidLeaves,
+            inputOtherDeductions,
+
+            inputIncentiveType,
+            inputIncentiveValue,
+
+            inputOvertimeType,
+            inputOvertimeValue
+
         ];
+
 
         liveInputs.forEach(input => {
-            input.addEventListener('input', updateSalarySlip);
+
+            input.addEventListener(
+                "input",
+                updateSalarySlip
+            );
+
         });
 
-        // Trigger dynamic change on month or year to automatically calculate calendar properties
-        selectMonth.addEventListener('change', autoSetCalendarDetails);
-        inputYear.addEventListener('change', autoSetCalendarDetails);
 
-        /**
-         * Checks leap year and returns appropriate days count.
-         */
-        function getDaysInMonth(monthIndex, year) {
-            if (monthIndex === 1) { // February check
-                return ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) ? 29 : 28;
+        selectMonth.addEventListener(
+            "change",
+            autoSetCalendarDetails
+        );
+
+
+        inputYear.addEventListener(
+            "change",
+            autoSetCalendarDetails
+        );
+
+
+        // ========================================================
+        // GET DAYS IN MONTH
+        // ========================================================
+
+        function getDaysInMonth(
+            monthIndex,
+            year
+        ) {
+
+            if (monthIndex === 1) {
+
+                return (
+                    (
+                        year % 4 === 0 &&
+                        year % 100 !== 0
+                    ) ||
+                    year % 400 === 0
+                )
+                    ? 29
+                    : 28;
+
             }
+
             return DAYS_IN_MONTH[monthIndex];
+
         }
 
-        /**
-         * Formats a date as YYYY-MM-DD for date-picker value fields
-         */
-        function formatYYYYMMDD(year, monthIndex, day) {
-            const mm = String(monthIndex + 1).padStart(2, '0');
-            const dd = String(day).padStart(2, '0');
+
+        // ========================================================
+        // DATE FORMAT
+        // ========================================================
+
+        function formatYYYYMMDD(
+            year,
+            monthIndex,
+            day
+        ) {
+
+            const mm =
+                String(monthIndex + 1)
+                    .padStart(2, "0");
+
+            const dd =
+                String(day)
+                    .padStart(2, "0");
+
             return `${year}-${mm}-${dd}`;
+
         }
 
-        /**
-         * Formats YYYY-MM-DD back to professional readable format
-         */
-        function formatToReadableDate(dateString) {
-            if (!dateString) return "";
-            const d = new Date(dateString);
-            if (isNaN(d)) return "";
-            const day = d.getDate();
-            const month = MONTH_NAMES[d.getMonth()];
-            return `${month} ${day}`;
+
+        function formatToReadableDate(
+            dateString
+        ) {
+
+            if (!dateString) {
+                return "";
+            }
+
+            const d =
+                new Date(dateString);
+
+            if (isNaN(d)) {
+                return "";
+            }
+
+            return `${
+                MONTH_NAMES[d.getMonth()]
+            } ${d.getDate()}`;
+
         }
 
-        /**
-         * Automatically sets 'Start Date' and 'End Date' to match the active full month default
-         */
+
+        // ========================================================
+        // AUTOMATIC CALENDAR
+        // ========================================================
+
         function autoSetCalendarDetails() {
-            const month = parseInt(selectMonth.value);
-            const year = parseInt(inputYear.value) || new Date().getFullYear();
-            const daysCount = getDaysInMonth(month, year);
 
-            inputPayPeriodStart.value = formatYYYYMMDD(year, month, 1);
-            inputPayPeriodEnd.value = formatYYYYMMDD(year, month, daysCount);
-            
+            const month =
+                parseInt(selectMonth.value);
+
+            const year =
+                parseInt(inputYear.value) ||
+                new Date().getFullYear();
+
+            const daysCount =
+                getDaysInMonth(
+                    month,
+                    year
+                );
+
+
+            inputPayPeriodStart.value =
+                formatYYYYMMDD(
+                    year,
+                    month,
+                    1
+                );
+
+
+            inputPayPeriodEnd.value =
+                formatYYYYMMDD(
+                    year,
+                    month,
+                    daysCount
+                );
+
+
             updateSalarySlip();
+
         }
 
-        // Helper to format raw integers to standard Indian Currency Format
+
+        // ========================================================
+        // CURRENCY FORMAT
+        // ========================================================
+
         function formatRupee(amount) {
-            return new Intl.NumberFormat('en-IN', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }).format(amount);
-        }
 
-        /**
-         * Primary orchestrator function calculating daily breakdown, totals and conversions
-         */
-        function updateSalarySlip() {
-            // Read UI parameter state
-            const employeeName = inputEmpName.value || "Bobby";
-            const designation = inputDesignation.value || "Stylist";
-            const department = inputDepartment.value || "Operations";
-            const monthIndex = parseInt(selectMonth.value);
-            const year = parseInt(inputYear.value) || new Date().getFullYear();
-            const totalDaysInMonth = getDaysInMonth(monthIndex, year);
-            
-            // Period dates parsing
-            const startDateVal = inputPayPeriodStart.value;
-            const endDateVal = inputPayPeriodEnd.value;
-            
-            let daysInActivePeriod = totalDaysInMonth;
-            if (startDateVal && endDateVal) {
-                const sDate = new Date(startDateVal);
-                const eDate = new Date(endDateVal);
-                if (!isNaN(sDate) && !isNaN(eDate) && eDate >= sDate) {
-                    const diffTime = Math.abs(eDate - sDate);
-                    daysInActivePeriod = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+            return new Intl.NumberFormat(
+                "en-IN",
+                {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
                 }
-            }
+            ).format(amount);
 
-            const baseMonthlySalary = parseFloat(inputBaseSalary.value) || 0;
-            const unpaidLeavesCount = parseFloat(inputUnpaidLeaves.value) || 0;
-            const otherDeductionsVal = parseFloat(inputOtherDeductions.value) || 0;
-
-            // Math execution
-            // Calculate daily rate based on total days in month
-            const dailyRate = baseMonthlySalary / totalDaysInMonth;
-            
-            // Calculate Earned base salary prorated for the period
-            const earnedBasicSalary = Math.round((dailyRate * daysInActivePeriod) * 100) / 100;
-
-            // Ensure unpaid leaves don't exceed active period days
-            const unpaidDays = Math.min(unpaidLeavesCount, daysInActivePeriod);
-            const leaveDeductionTotal = Math.round((dailyRate * unpaidDays) * 100) / 100;
-            
-            const totalDeductionsSum = leaveDeductionTotal + otherDeductionsVal;
-            const netTakeHomePay = Math.max(0, earnedBasicSalary - totalDeductionsSum);
-
-            // Populate info badges
-            infoTotalMonthDays.innerText = totalDaysInMonth;
-            infoActiveDays.innerText = daysInActivePeriod;
-
-            // Populate preview fields 
-            slipPeriodHeader.innerText = `${MONTH_NAMES[monthIndex]} ${year}`;
-            slipName.innerText = employeeName;
-            sigEmployeeName.innerText = employeeName;
-            slipDesignation.innerText = designation;
-            slipDepartment.innerText = department;
-            
-            // Render specific readable range (e.g. "June 15 - June 30")
-            const readableStart = formatToReadableDate(startDateVal);
-            const readableEnd = formatToReadableDate(endDateVal);
-            slipPayPeriod.innerText = (readableStart && readableEnd) ? `${readableStart} - ${readableEnd}` : `${MONTH_NAMES[monthIndex]} 1 - ${MONTH_NAMES[monthIndex]} ${totalDaysInMonth}`;
-            
-            slipTotalDays.innerText = `${totalDaysInMonth} Days`;
-            slipActiveDays.innerText = `${daysInActivePeriod} Days`;
-            slipLeaves.innerText = `${unpaidDays} ${unpaidDays === 1 ? 'Day' : 'Days'} (LWP)`;
-
-            // Populate numerical breakdown in Ledger Table
-            slipBaseSalary.innerText = formatRupee(earnedBasicSalary);
-            
-            // Label customization if they are a mid-month joiner (partial month work period)
-            if (daysInActivePeriod < totalDaysInMonth) {
-                slipEarningsSubtext.innerText = `Prorated for ${daysInActivePeriod} of ${totalDaysInMonth} Days (Monthly Rate: ₹${formatRupee(baseMonthlySalary)})`;
-            } else {
-                slipEarningsSubtext.innerText = `Full month salary (30/31 days)`;
-            }
-
-            slipLeaveBreakdownLabel.innerText = `Leave Without Pay (${unpaidDays} ${unpaidDays === 1 ? 'Day' : 'Days'})`;
-            slipLeaveDeduction.innerText = formatRupee(leaveDeductionTotal);
-            slipOtherDeductions.innerText = formatRupee(otherDeductionsVal);
-            slipGrossEarnings.innerText = `₹${formatRupee(earnedBasicSalary)}`;
-            slipTotalDeductions.innerText = `₹${formatRupee(totalDeductionsSum)}`;
-            slipNetPay.innerText = `₹${formatRupee(netTakeHomePay)}`;
-
-            // Populate Words conversion
-            slipNetInWords.innerText = convertNumberToWords(Math.round(netTakeHomePay));
         }
 
-        /**
-         * Decodes standard digit values to descriptive English equivalents in Indian Style (Lakhs/Crores)
-         */
-        function convertNumberToWords(amount) {
-            const singleWords = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
-            const tensWords = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
-            
-            if (amount === 0) return "Zero Rupees Only";
-            
-            let num = Math.floor(amount);
+
+        // ========================================================
+        // INCENTIVE / OVERTIME CALCULATION
+        // ========================================================
+
+        function calculateAdditionalEarning(
+            type,
+            value,
+            earnedBasicSalary
+        ) {
+
+            const numericValue =
+                parseFloat(value) || 0;
+
+
+            // Percentage
+            if (type === "percentage") {
+
+                return Math.round(
+                    (
+                        earnedBasicSalary *
+                        numericValue /
+                        100
+                    ) * 100
+                ) / 100;
+
+            }
+
+
+            // Flat Amount
+            if (type === "flat") {
+
+                return Math.round(
+                    numericValue * 100
+                ) / 100;
+
+            }
+
+
+            // None
+            return 0;
+
+        }
+
+
+        // ========================================================
+        // INPUT HELP TEXT
+        // ========================================================
+
+        function updateEarningInputLabels() {
+
+
+            // INCENTIVE
+
+            if (
+                inputIncentiveType.value ===
+                "percentage"
+            ) {
+
+                inputIncentiveValue.placeholder =
+                    "Percentage %";
+
+                incentiveHelp.innerText =
+                    "Enter incentive percentage of earned basic salary.";
+
+            }
+
+            else if (
+                inputIncentiveType.value ===
+                "flat"
+            ) {
+
+                inputIncentiveValue.placeholder =
+                    "₹ Flat Amount";
+
+                incentiveHelp.innerText =
+                    "Enter the exact fixed incentive amount in ₹.";
+
+            }
+
+            else {
+
+                inputIncentiveValue.placeholder =
+                    "Amount";
+
+                incentiveHelp.innerText =
+                    "No incentive will be added.";
+
+            }
+
+
+            // OVERTIME
+
+            if (
+                inputOvertimeType.value ===
+                "percentage"
+            ) {
+
+                inputOvertimeValue.placeholder =
+                    "Percentage %";
+
+                overtimeHelp.innerText =
+                    "Enter overtime percentage of earned basic salary.";
+
+            }
+
+            else if (
+                inputOvertimeType.value ===
+                "flat"
+            ) {
+
+                inputOvertimeValue.placeholder =
+                    "₹ Flat Amount";
+
+                overtimeHelp.innerText =
+                    "Enter the exact fixed overtime amount in ₹.";
+
+            }
+
+            else {
+
+                inputOvertimeValue.placeholder =
+                    "Amount";
+
+                overtimeHelp.innerText =
+                    "No overtime will be added.";
+
+            }
+
+        }
+
+
+        inputIncentiveType.addEventListener(
+            "change",
+            function () {
+
+                updateEarningInputLabels();
+                updateSalarySlip();
+
+            }
+        );
+
+
+        inputOvertimeType.addEventListener(
+            "change",
+            function () {
+
+                updateEarningInputLabels();
+                updateSalarySlip();
+
+            }
+        );
+
+
+        // ========================================================
+        // MAIN SALARY CALCULATION
+        // ========================================================
+
+        function updateSalarySlip() {
+
+
+            // ----------------------------------------------------
+            // Employee
+            // ----------------------------------------------------
+
+            const employeeName =
+                inputEmpName.value ||
+                "Bobby";
+
+            const designation =
+                inputDesignation.value ||
+                "Stylist";
+
+            const department =
+                inputDepartment.value ||
+                "Operations";
+
+
+            // ----------------------------------------------------
+            // Calendar
+            // ----------------------------------------------------
+
+            const monthIndex =
+                parseInt(selectMonth.value);
+
+            const year =
+                parseInt(inputYear.value) ||
+                new Date().getFullYear();
+
+            const totalDaysInMonth =
+                getDaysInMonth(
+                    monthIndex,
+                    year
+                );
+
+
+            // ----------------------------------------------------
+            // Pay Period
+            // ----------------------------------------------------
+
+            const startDateVal =
+                inputPayPeriodStart.value;
+
+            const endDateVal =
+                inputPayPeriodEnd.value;
+
+
+            let daysInActivePeriod =
+                totalDaysInMonth;
+
+
+            if (
+                startDateVal &&
+                endDateVal
+            ) {
+
+                const sDate =
+                    new Date(startDateVal);
+
+                const eDate =
+                    new Date(endDateVal);
+
+
+                if (
+                    !isNaN(sDate) &&
+                    !isNaN(eDate) &&
+                    eDate >= sDate
+                ) {
+
+                    const diffTime =
+                        Math.abs(
+                            eDate - sDate
+                        );
+
+                    daysInActivePeriod =
+                        Math.ceil(
+                            diffTime /
+                            (1000 * 60 * 60 * 24)
+                        ) + 1;
+
+                }
+
+            }
+
+
+            // ----------------------------------------------------
+            // Inputs
+            // ----------------------------------------------------
+
+            const baseMonthlySalary =
+                parseFloat(
+                    inputBaseSalary.value
+                ) || 0;
+
+
+            const unpaidLeavesCount =
+                parseFloat(
+                    inputUnpaidLeaves.value
+                ) || 0;
+
+
+            const otherDeductionsVal =
+                parseFloat(
+                    inputOtherDeductions.value
+                ) || 0;
+
+
+            const incentiveType =
+                inputIncentiveType.value;
+
+
+            const incentiveValue =
+                parseFloat(
+                    inputIncentiveValue.value
+                ) || 0;
+
+
+            const overtimeType =
+                inputOvertimeType.value;
+
+
+            const overtimeValue =
+                parseFloat(
+                    inputOvertimeValue.value
+                ) || 0;
+
+
+            // ----------------------------------------------------
+            // Basic Salary
+            // ----------------------------------------------------
+
+            const dailyRate =
+                baseMonthlySalary /
+                totalDaysInMonth;
+
+
+            const earnedBasicSalary =
+                Math.round(
+                    (
+                        dailyRate *
+                        daysInActivePeriod
+                    ) * 100
+                ) / 100;
+
+
+            // ----------------------------------------------------
+            // Leave Deduction
+            // ----------------------------------------------------
+
+            const unpaidDays =
+                Math.min(
+                    unpaidLeavesCount,
+                    daysInActivePeriod
+                );
+
+
+            const leaveDeductionTotal =
+                Math.round(
+                    (
+                        dailyRate *
+                        unpaidDays
+                    ) * 100
+                ) / 100;
+
+
+            // ----------------------------------------------------
+            // Incentive
+            // ----------------------------------------------------
+
+            const incentiveAmount =
+                calculateAdditionalEarning(
+                    incentiveType,
+                    incentiveValue,
+                    earnedBasicSalary
+                );
+
+
+            // ----------------------------------------------------
+            // Overtime
+            // ----------------------------------------------------
+
+            const overtimeAmount =
+                calculateAdditionalEarning(
+                    overtimeType,
+                    overtimeValue,
+                    earnedBasicSalary
+                );
+
+
+            // ----------------------------------------------------
+            // Gross Earnings
+            // ----------------------------------------------------
+
+            const grossPeriodEarnings =
+                Math.round(
+                    (
+                        earnedBasicSalary +
+                        incentiveAmount +
+                        overtimeAmount
+                    ) * 100
+                ) / 100;
+
+
+            // ----------------------------------------------------
+            // Total Deductions
+            // ----------------------------------------------------
+
+            const totalDeductionsSum =
+                Math.round(
+                    (
+                        leaveDeductionTotal +
+                        otherDeductionsVal
+                    ) * 100
+                ) / 100;
+
+
+            // ----------------------------------------------------
+            // Net Salary
+            // ----------------------------------------------------
+
+            const netTakeHomePay =
+                Math.max(
+                    0,
+                    grossPeriodEarnings -
+                    totalDeductionsSum
+                );
+
+
+            // ====================================================
+            // UPDATE INFO
+            // ====================================================
+
+            infoTotalMonthDays.innerText =
+                totalDaysInMonth;
+
+            infoActiveDays.innerText =
+                daysInActivePeriod;
+
+
+            // ====================================================
+            // UPDATE EMPLOYEE
+            // ====================================================
+
+            slipPeriodHeader.innerText =
+                `${MONTH_NAMES[monthIndex]} ${year}`;
+
+            slipName.innerText =
+                employeeName;
+
+            sigEmployeeName.innerText =
+                employeeName;
+
+            slipDesignation.innerText =
+                designation;
+
+            slipDepartment.innerText =
+                department;
+
+
+            // ====================================================
+            // UPDATE PAY PERIOD
+            // ====================================================
+
+            const readableStart =
+                formatToReadableDate(
+                    startDateVal
+                );
+
+            const readableEnd =
+                formatToReadableDate(
+                    endDateVal
+                );
+
+
+            if (
+                readableStart &&
+                readableEnd
+            ) {
+
+                slipPayPeriod.innerText =
+                    `${readableStart} - ${readableEnd}`;
+
+            }
+
+            else {
+
+                slipPayPeriod.innerText =
+                    `${MONTH_NAMES[monthIndex]} 1 - ${MONTH_NAMES[monthIndex]} ${totalDaysInMonth}`;
+
+            }
+
+
+            slipTotalDays.innerText =
+                `${totalDaysInMonth} Days`;
+
+
+            slipActiveDays.innerText =
+                `${daysInActivePeriod} Days`;
+
+
+            slipLeaves.innerText =
+                `${unpaidDays} ${
+                    unpaidDays === 1
+                        ? "Day"
+                        : "Days"
+                } (LWP)`;
+
+
+            // ====================================================
+            // BASIC SALARY
+            // ====================================================
+
+            slipBaseSalary.innerText =
+                formatRupee(
+                    earnedBasicSalary
+                );
+
+
+            if (
+                daysInActivePeriod <
+                totalDaysInMonth
+            ) {
+
+                slipEarningsSubtext.innerText =
+                    `Prorated for ${daysInActivePeriod} of ${totalDaysInMonth} Days (Monthly Rate: ₹${formatRupee(baseMonthlySalary)})`;
+
+            }
+
+            else {
+
+                slipEarningsSubtext.innerText =
+                    `Full month salary (${totalDaysInMonth} days)`;
+
+            }
+
+
+            // ====================================================
+            // LEAVE DEDUCTION
+            // ====================================================
+
+            slipLeaveBreakdownLabel.innerText =
+                `Leave Without Pay (${unpaidDays} ${
+                    unpaidDays === 1
+                        ? "Day"
+                        : "Days"
+                })`;
+
+
+            slipLeaveDeduction.innerText =
+                formatRupee(
+                    leaveDeductionTotal
+                );
+
+
+            // ====================================================
+            // INCENTIVE
+            // ====================================================
+
+            slipIncentive.innerText =
+                formatRupee(
+                    incentiveAmount
+                );
+
+
+            if (
+                incentiveType ===
+                "percentage"
+            ) {
+
+                slipIncentiveSubtext.innerText =
+                    `${incentiveValue}% of earned basic salary`;
+
+            }
+
+            else if (
+                incentiveType ===
+                "flat"
+            ) {
+
+                slipIncentiveSubtext.innerText =
+                    `Flat amount ₹${formatRupee(incentiveValue)}`;
+
+            }
+
+            else {
+
+                slipIncentiveSubtext.innerText =
+                    "No incentive";
+
+            }
+
+
+            // ====================================================
+            // OVERTIME
+            // ====================================================
+
+            slipOvertime.innerText =
+                formatRupee(
+                    overtimeAmount
+                );
+
+
+            if (
+                overtimeType ===
+                "percentage"
+            ) {
+
+                slipOvertimeSubtext.innerText =
+                    `${overtimeValue}% of earned basic salary`;
+
+            }
+
+            else if (
+                overtimeType ===
+                "flat"
+            ) {
+
+                slipOvertimeSubtext.innerText =
+                    `Flat amount ₹${formatRupee(overtimeValue)}`;
+
+            }
+
+            else {
+
+                slipOvertimeSubtext.innerText =
+                    "No overtime";
+
+            }
+
+
+            // ====================================================
+            // OTHER DEDUCTIONS
+            // ====================================================
+
+            slipOtherDeductions.innerText =
+                formatRupee(
+                    otherDeductionsVal
+                );
+
+
+            // ====================================================
+            // TOTALS
+            // ====================================================
+
+            slipGrossEarnings.innerText =
+                `₹${formatRupee(
+                    grossPeriodEarnings
+                )}`;
+
+
+            slipTotalDeductions.innerText =
+                `₹${formatRupee(
+                    totalDeductionsSum
+                )}`;
+
+
+            slipNetPay.innerText =
+                `₹${formatRupee(
+                    netTakeHomePay
+                )}`;
+
+
+            // ====================================================
+            // AMOUNT IN WORDS
+            // ====================================================
+
+            slipNetInWords.innerText =
+                convertNumberToWords(
+                    Math.round(
+                        netTakeHomePay
+                    )
+                );
+
+        }
+
+
+        // ========================================================
+        // NUMBER TO WORDS
+        // ========================================================
+
+        function convertNumberToWords(
+            amount
+        ) {
+
+            const singleWords = [
+                "",
+                "One",
+                "Two",
+                "Three",
+                "Four",
+                "Five",
+                "Six",
+                "Seven",
+                "Eight",
+                "Nine",
+                "Ten",
+                "Eleven",
+                "Twelve",
+                "Thirteen",
+                "Fourteen",
+                "Fifteen",
+                "Sixteen",
+                "Seventeen",
+                "Eighteen",
+                "Nineteen"
+            ];
+
+
+            const tensWords = [
+                "",
+                "",
+                "Twenty",
+                "Thirty",
+                "Forty",
+                "Fifty",
+                "Sixty",
+                "Seventy",
+                "Eighty",
+                "Ninety"
+            ];
+
+
+            if (amount === 0) {
+
+                return "Zero Rupees Only";
+
+            }
+
+
+            let num =
+                Math.floor(amount);
+
             let words = "";
 
-            if (num >= 10000000) { // Crores
-                words += convertChunk(Math.floor(num / 10000000)) + " Crore ";
+
+            // Crores
+
+            if (num >= 10000000) {
+
+                words +=
+                    convertChunk(
+                        Math.floor(
+                            num / 10000000
+                        )
+                    ) +
+                    " Crore ";
+
                 num %= 10000000;
+
             }
-            if (num >= 100000) { // Lakhs
-                words += convertChunk(Math.floor(num / 100000)) + " Lakh ";
+
+
+            // Lakhs
+
+            if (num >= 100000) {
+
+                words +=
+                    convertChunk(
+                        Math.floor(
+                            num / 100000
+                        )
+                    ) +
+                    " Lakh ";
+
                 num %= 100000;
+
             }
-            if (num >= 1000) { // Thousands
-                words += convertChunk(Math.floor(num / 1000)) + " Thousand ";
+
+
+            // Thousands
+
+            if (num >= 1000) {
+
+                words +=
+                    convertChunk(
+                        Math.floor(
+                            num / 1000
+                        )
+                    ) +
+                    " Thousand ";
+
                 num %= 1000;
+
             }
-            if (num >= 100) { // Hundreds
-                words += convertChunk(Math.floor(num / 100)) + " Hundred ";
+
+
+            // Hundreds
+
+            if (num >= 100) {
+
+                words +=
+                    convertChunk(
+                        Math.floor(
+                            num / 100
+                        )
+                    ) +
+                    " Hundred ";
+
                 num %= 100;
+
             }
+
+
+            // Remaining
+
             if (num > 0) {
-                if (words !== "") words += "and ";
-                words += convertChunk(num);
+
+                if (words !== "") {
+                    words += "and ";
+                }
+
+                words +=
+                    convertChunk(num);
+
             }
+
 
             function convertChunk(n) {
-                if (n < 20) return singleWords[n];
-                const tens = Math.floor(n / 10);
-                const singles = n % 10;
-                return tensWords[tens] + (singles !== 0 ? " " + singleWords[singles] : "");
+
+                if (n < 20) {
+                    return singleWords[n];
+                }
+
+
+                const tens =
+                    Math.floor(n / 10);
+
+                const singles =
+                    n % 10;
+
+
+                return (
+                    tensWords[tens] +
+                    (
+                        singles !== 0
+                            ? " " +
+                              singleWords[singles]
+                            : ""
+                    )
+                );
+
             }
 
-            return (words.trim() + " Rupees Only").replace(/\s+/g, ' ');
+
+            return (
+                words.trim() +
+                " Rupees Only"
+            ).replace(
+                /\s+/g,
+                " "
+            );
+
         }
 
-        // Initial launch configuration on document load
-        window.onload = function() {
-            // Programmatically set calendar defaults on initial load (June 2026)
+
+        // ========================================================
+        // INITIAL LOAD
+        // ========================================================
+
+        window.onload = function () {
+
             autoSetCalendarDetails();
-        }
+
+            updateEarningInputLabels();
+
+        };
+
     </script>
+
 </body>
+
 </html>
+```
